@@ -1,5 +1,6 @@
 'use client';
 
+import Card from '@/components/Card';
 import GET_CHARACTERS from '@/graphql/queries/getCharacters';
 import { useQuery } from '@apollo/client';
 
@@ -9,16 +10,14 @@ export default function Home() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  console.log(data);
-
   return (
-    <main className="w-full min-h-screen grid place-content-center">
-      <h1 className="text-4xl">hii everyone!!</h1>
-      {data?.characters?.data.map((character) => (
-        <div key={character.id}>
-          <h1>{character.attributes?.name}</h1>
-        </div>
-      ))}
+    <main className="max-w-7xl m-auto p-4">
+      <h1 className="text-4xl">Genshin Character List</h1>
+      <div className="flex flex-col gap-4 mt-4">
+        {data?.characters?.data.map((character) => (
+          <Card key={character.id} data={character} />
+        ))}
+      </div>
     </main>
   );
 }
