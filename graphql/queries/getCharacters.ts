@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
+import { gql } from '../__generated__/gql';
 
-const CHARACTERS_QUERY = gql`
+const GET_CHARACTERS = gql(/* GraphQL */ `
   query getCharacters {
     characters {
       data {
@@ -13,6 +13,6 @@ const CHARACTERS_QUERY = gql`
       }
     }
   }
-`;
+`);
 
-export default CHARACTERS_QUERY;
+export default GET_CHARACTERS;
